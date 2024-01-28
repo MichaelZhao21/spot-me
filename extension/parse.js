@@ -31,7 +31,6 @@ const getEmail = async () => {
       'Content-type': 'application/json; charset=UTF-8',
     },
   });
-  console.log(content);
   const data = await result.json();
 
   //return [email, subject, content];

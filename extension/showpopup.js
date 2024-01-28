@@ -18,4 +18,28 @@ const showPopup = (data) => {
   // Run the JS after everything gets injected in the page
 
   {POPUP_JS}
+
+  // Add the mutation listener and listen for email changes
+  const observer2 = new MutationObserver(async () => {
+    if (
+      document.querySelector('h2.hP') &&
+      document.querySelector('h2.hP').textContent !== data.subject.text
+    ) {
+      observer2.disconnect();
+      if (popup) popup.remove();
+      arr = await getEmail();
+      showPopup(arr);
+    }
+
+    if (
+      document.getElementById(':1k') &&
+      document.getElementById(':1k').offsetParent
+    ) {
+      if (popup) popup.remove();
+    }
+  });
+  observer2.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
 };

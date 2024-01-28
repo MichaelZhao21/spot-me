@@ -66,7 +66,6 @@ function load(data){
 
   // change email
   senderEmail = t.sender.text
-  console.log(t.sender.text)
   document.getElementById('sender-email').innerHTML = senderEmail
   // change description
   senderText = t.sender.description
