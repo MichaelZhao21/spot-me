@@ -71,6 +71,13 @@ def check():
         sender = sender.strip()
         sender_email = None
 
+    # Check sender -- if > 2 periods, flag
+    sender_status = 0
+    sender_error = None
+    if sender.count('.') > 2:
+        sender_status = 2
+        sender_error = "Sender contains more than 1 subdomain"
+
     # Extract hyperlinks
     soup = BeautifulSoup(content, 'html.parser')
     links = soup.find_all('a')
@@ -85,9 +92,9 @@ def check():
     return {
         "cum_level": cum_level,
         "sender": {
-            "level": 0, 
+            "level": sender_status, 
             "text": (sender_email + " (" + sender + ")") if sender_email is not None else sender,
-            "description": None,
+            "description": sender_error,
         },
         "subject": {
             "level": subj_status,
