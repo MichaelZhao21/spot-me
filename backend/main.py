@@ -61,6 +61,15 @@ def check():
         subj_status = 2
         print("2+ exclamation marks found in subject")
         subj_error = "Subject contains multiple exclamation marks"
+
+    # If there are any sus words, flag (but if we are already at level 2, don't flag)
+    if subj_status < 2:
+        sus_words = ['invoice', 'new', 'message', 'required', 'file', 'request', 'action', 'document', 'verification', 'efax', 'vm', 'deal', 'free', 'guarantee', 'hidden', 'effective', 'limited', 'lifetime', 'lose', 'medium', 'now', 'payment', 'bill', 'debt']
+        for word in sus_words:
+            if word in subj_clean:
+                subj_status = 1
+                print("Sus word found in subject:", word)
+                subj_error = "Subject contains suspicious word '" + word + "'" 
     
     # Extract sender
     x = re.findall(r'^(.*)\<(.*)\>', sender)
@@ -85,8 +94,21 @@ def check():
     filtered_links = [link for link in hyperlinks if link['actual'] is not None]
     print("Hyperlinks:", len(filtered_links))
 
+    # Sus hyperlinks
+    hyper_status = 0
+    hyper_error = None
+    for link in filtered_links:
+        display_origin = re.search(r'[a-zA-Z0-9\-]*\.[a-zA-Z0-9\-]*', link['display'])
+        actual_origin = re.search(r'[a-zA-Z0-9\-]*\.[a-zA-Z0-9\-]*', link['actual'])
+        if display_origin is not None and actual_origin is not None:
+            if display_origin.group(0) != actual_origin.group(0):
+                print("Suspicious hyperlink:", "Expected", link['display'], "; Got", link['actual'])
+                hyper_status = 2
+                hyper_error = "Hyperlink text url does not match actual url!"
+                break
+
     # Get cum level
-    cum_level = max(subj_status, 0) # TODO: Add the other levels
+    cum_level = max(subj_status, max(subj_status, hyper_status))
     print("Cumulative Level:", cum_level)
 
     return {
@@ -102,9 +124,9 @@ def check():
             "description": subj_error,
         },
         "hyperlinks": {
-            "level": 0,
+            "level": hyper_status,
             "links": filtered_links,
-            "description": None
+            "description": hyper_error,
         }
     }
 
