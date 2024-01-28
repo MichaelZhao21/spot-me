@@ -16,16 +16,87 @@
 
 // The sender object has 3 levels. 1. good 2. maybe 3. bad, display the page on case basis
 
+function checkLevel(senderLevel, subjectLevel, linksLevel){
+  let level = 0
+
+  // check sender
+  if(senderLevel >= subjectLevel && senderLevel >= linksLevel){
+    level = senderLevel
+  }
+  // check subject
+  if(subjectLevel >= senderLevel && subjectLevel >= linksLevel){
+    level = subjectLevel
+  } else {
+    level = linksLevel
+  }
+
+    return level
+}
+
 function load(data){
   let t = data
   console.log(t)
+  senderLevel = t.sender.level
+  subjectLevel = t.subject.level
+  linksLevel = t.hyperlinks.level
+  level = checkLevel(senderLevel, subjectLevel, linksLevel)
+
+  // -- UPDATE HEADER --
+  var pic = document.querySelector("img[src='../images/dude-bad.svg' ")
+  switch(level){
+    case 0:
+      document.getElementById('header-text').innerHTML = "SAFE"
+      pic.src = "../images/dude-good-green.svg" 
+      break;
+    case 1:
+      document.getElementById('header-text').innerHTML = "CAUTION"
+      pic.src = "../images/dude-maybe.svg" 
+      break;
+    case 2:
+      document.getElementById('header-text').innerHTML = "SUSPICIOUS"
+      pic.src = "../images/dude-bad.svg" 
+      break;
+    
+  }
+
+  // -- UPDATE SENDER SECTION --
+
+  // change email
+  senderEmail = t.sender.text
+  console.log(t.sender.text)
+  document.getElementById('sender-email').innerHTML = senderEmail
+  // change description
+  senderText = t.sender.description
+  document.getElementById('sender-text').innerHTML = senderText
+
+
+  // -- UPDATE SUBJECT SECTION --
+
+  // change text
+  subjectText = t.subject.text
+  document.getElementById('subject-text').innerHTML = subjectText
+
+  // change description
+  subjectDescription = t.subject.description
+  document.getElementById('subject-desc').innerHTML = subjectDescription
+
+  // -- UPDATE HYPERLINKS SECTION -- 
+
+  // update display link
+  linkDisplay = t.hyperlinks.links[0].display
+  document.getElementById('link-display').innerHTML = linkDisplay
+
+  // update real link
+  linkReal = t.hyperlinks.links[0].actual
+  document.getElementById('link-real').innerHTML = linkReal
+
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   load({
     "sender": {
       "level": 0, 
-      "text": "string with the sender email",
+      "text": "sender@email",
       "description": "string describing what is bad if level > 0"
     },
     "subject": {
