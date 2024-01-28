@@ -32,11 +32,18 @@ const showPopup = (data) => {
     }
 
     if (
-      document.getElementById(':1k') &&
-      document.getElementById(':1k').offsetParent
+      !document.querySelector('h2.hP') &&
+      document.getElementById('spot-me-popup')
     ) {
       if (popup) popup.remove();
     }
+
+    // if (
+    //   document.getElementById(':1k') &&
+    //   document.getElementById(':1k').offsetParent
+    // ) {
+    //   if (popup) popup.remove();
+    // }
   });
   observer2.observe(document.body, {
     childList: true,

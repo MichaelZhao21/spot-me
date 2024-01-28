@@ -104,3 +104,20 @@ body {
     margin-top: 5px;
     font-weight: bold;
 }
+
+#spot-me-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin: 10px;
+    font-size: 1.5rem;
+    z-index: 9001;
+    color: #777777;
+    cursor: pointer;
+    font-weight: bold;
+    transition-duration: 200ms;
+}
+
+#spot-me-close:hover {
+    color: #45CAE1;
+}

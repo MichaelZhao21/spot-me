@@ -7,7 +7,7 @@ const divCss = `
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 9999;
+    z-index: 9000;
     width: 400px;
     overflow-y: auto;
     overflow-x: hidden;

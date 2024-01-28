@@ -100,6 +100,11 @@ function load(data){
   });
 
   document.getElementById('link-desc').innerHTML = t.hyperlinks.description;
+
+  // Close button
+  document.getElementById('spot-me-close').addEventListener('click', () => {
+    document.getElementById('spot-me-popup').remove();
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
