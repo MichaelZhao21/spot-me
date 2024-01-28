@@ -18,7 +18,7 @@ body {
     flex-wrap: wrap; 
     align-items: center;
     justify-content:space-between;
-    width: 225px;
+    width: calc(100% - 30px);
     border-radius: 5px;
 }
 
@@ -40,4 +40,40 @@ body {
     padding: 0; 
     width: 100%;
     
+}
+
+#sender-email {
+    font-size: 1.5rem;
+}
+
+#link-display {
+    width: 100%;
+}
+
+.link-d {
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: #45CAE1;
+}
+
+.link-a {
+    width: 100%;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+}
+
+.heading {
+    margin: 0;
+    margin-left: 3px;
+    color: #777777;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.heading-container {
+    margin-top: 0;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

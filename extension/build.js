@@ -8,13 +8,14 @@ const divCss = `
     top: 20px;
     right: 20px;
     z-index: 9999;
-    width: 300px;
+    width: 400px;
     height: 600px;
     overflow-y: auto;
     overflow-x: hidden;
     background-color: white;
     filter: drop-shadow(0px 5px 3px #AAAAAAAA);
     border-radius: 5px;
+    padding: 15px;
 }
 `;
 
@@ -45,6 +46,7 @@ function build() {
 
     // Modify the JS to remove everything after "document.addEventListener"
     const popupJSCut = popupJS.split('document.addEventListener')[0] + "load(data);";
+    const popupJSMod = popupJSCut.replace(/\"\.\.\/images\//g, 'url + "images/')
 
     // Modify the CSS to include the divCss
     const popupCSSFull = popupCSS + divCss;
@@ -52,7 +54,7 @@ function build() {
     // Replace all placeholders
     showPopup = showPopup.replace('{POPUP_HTML}', popupHTMLCut);
     showPopup = showPopup.replace('{POPUP_CSS}', popupCSSFull);
-    showPopup = showPopup.replace('{POPUP_JS}', popupJSCut);
+    showPopup = showPopup.replace('{POPUP_JS}', popupJSMod);
 
     parse = parse.replace('const showPopup = () => {};', showPopup);
     oparse = oparse.replace('const showPopup = () => {};', showPopup);

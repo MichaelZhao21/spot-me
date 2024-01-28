@@ -42,7 +42,7 @@ function load(data){
   level = checkLevel(senderLevel, subjectLevel, linksLevel)
 
   // -- UPDATE HEADER --
-  var pic = document.querySelector("img[src='../images/dude-bad.svg' ")
+  const pic = document.getElementById('header-dude');
   switch(level){
     case 0:
       document.getElementById('header-text').innerHTML = "SAFE"
@@ -83,13 +83,19 @@ function load(data){
   // -- UPDATE HYPERLINKS SECTION -- 
 
   // update display link
-  linkDisplay = t.hyperlinks.links[0].display
-  document.getElementById('link-display').innerHTML = linkDisplay
+  const linkDisplay = document.getElementById('link-display');
 
-  // update real link
-  linkReal = t.hyperlinks.links[0].actual
-  document.getElementById('link-real').innerHTML = linkReal
+  t.hyperlinks.links.forEach((link) => {
+    const dl = document.createElement('p');
+    dl.innerHTML = link.display;
+    dl.className = 'base link-d';
+    linkDisplay.appendChild(dl);
 
+    const rl = document.createElement('p');
+    rl.innerHTML = link.actual;
+    rl.className = 'base link-a';
+    linkDisplay.appendChild(rl);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
