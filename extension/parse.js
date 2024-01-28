@@ -1,5 +1,4 @@
-let observer = new MutationObserver(async (mutations) => {
-  console.log('mut');
+const observer = new MutationObserver(async () => {
   if (
     document.querySelector('.gE.iv.gt') &&
     document.querySelector('h2.hP') &&
@@ -19,6 +18,11 @@ const getEmail = async () => {
   const email = document.querySelector('.gE.iv.gt').textContent;
   const subject = document.querySelector('h2.hP').textContent;
   const content = document.querySelector('.a3s.aiL').textContent;
+
+  // TODO: SALVA EMAIL, SUBJECT E CONTENT
+  // TODO: SALMAN, FAI UNA CHIAMATA A UN ENDPOINT CON I DATI
+  // TODO: SALMAN, ADD API CALL HERE IMMEDIATELY AFTER THE ABOVE TODO
+
   return [email, subject, content];
   //var port = chrome.runtime.connect({ name: 'channel' });
   //port.postMessage({ sender: email, subject: subject, content: content });
@@ -26,6 +30,9 @@ const getEmail = async () => {
 
 const showPopup = (data) => {
   const popup = document.createElement('div');
+  const styling = document.createElement('style');
+  const script = document.createElement('script');
+
   popup.id = 'popup';
   console.log(data);
   popup.style = `
@@ -42,5 +49,7 @@ const showPopup = (data) => {
     <p>${data[2]}</p>
 
     `;
+  document.body.appendChild(styling);
+  document.body.appendChild(script);
   document.body.appendChild(popup);
 };
