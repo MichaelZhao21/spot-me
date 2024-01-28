@@ -45,15 +45,18 @@ function load(data){
   const pic = document.getElementById('header-dude');
   switch(level){
     case 0:
-      document.getElementById('header-text').innerHTML = "SAFE"
+      document.getElementById('header-text').innerHTML = "Safe Email"
+      document.getElementById('header-desc').innerHTML = "This email should be safe."
       pic.src = "../images/dude-good-green.svg" 
       break;
     case 1:
-      document.getElementById('header-text').innerHTML = "CAUTION"
+      document.getElementById('header-text').innerHTML = "Suspicious..."
+      document.getElementById('header-desc').innerHTML = "Be careful with this email; it may be suspicious."
       pic.src = "../images/dude-maybe.svg" 
       break;
     case 2:
-      document.getElementById('header-text').innerHTML = "SUSPICIOUS"
+      document.getElementById('header-text').innerHTML = "Dangerous!"
+      document.getElementById('header-desc').innerHTML = "This email is a SCAM or a PHISHING EMAIL!"
       pic.src = "../images/dude-bad.svg" 
       break;
     
