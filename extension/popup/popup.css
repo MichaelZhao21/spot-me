@@ -17,6 +17,70 @@ body {
     font-family: NimbusSans;
 }
 
+@keyframes two {
+    0% {
+        background-color: #ffb1ad;
+        opacity:1;
+    }
+    22% {
+        background-color: #ff5e56;
+    }
+    77% {
+        background-color: #fc7871;
+    }
+    100% {
+        background-color: #ff918b;
+    }
+}
+
+@-webkit-keyframes two {
+    0% {
+        background-color: #ffb1ad;
+        opacity:1;
+    }
+    22% {
+        background-color: #ff5e56;
+    }
+    77% {
+        background-color: #fc7871;
+    }
+    100% {
+        background-color: #ff918b;
+    }
+}
+
+.two {
+    animation-name: two;
+    animation-duration: 2000ms;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+
+    -webkit-animation-name: two;
+    -webkit-animation-duration: 2000ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in-out;
+}
+
+.two-stay {
+    background-color: #ff918b;
+}
+
+/* .two {
+    background-color: #ff918b;
+    -webkit-transition: background-color 2s ease-out;
+    -moz-transition: background-color 2s ease-out;
+    -o-transition: background-color 2s ease-out;
+    transition: background-color 2s ease-out;
+} */
+
+.one {
+    background-color: #fffa9c;
+    -webkit-transition: background-color 2s ease-out;
+    -moz-transition: background-color 2s ease-out;
+    -o-transition: background-color 2s ease-out;
+    transition: background-color 2s ease-out;
+}
+
 .email{
     padding: 15px; 
     display: flex; 
@@ -103,6 +167,15 @@ body {
     color: red;
     margin-top: 5px;
     font-weight: bold;
+}
+
+.two .badtext {
+    color: white;
+    text-decoration: underline;
+}
+
+.two .heading {
+    color: red;
 }
 
 #spot-me-close {

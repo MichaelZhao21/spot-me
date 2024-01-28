@@ -65,12 +65,20 @@ function load(data){
   // -- UPDATE SENDER SECTION --
 
   // change email
-  senderEmail = t.sender.text
-  document.getElementById('sender-email').innerHTML = senderEmail
+  senderEmail = t.sender.text;
+  document.getElementById('sender-email').innerHTML = senderEmail;
   // change description
-  senderText = t.sender.description
-  document.getElementById('sender-text').innerHTML = senderText
+  senderText = t.sender.description;
+  document.getElementById('sender-text').innerHTML = senderText;
 
+  if(senderLevel === 2){
+    document.getElementById('sender-sec').classList.add("two")
+    document.getElementById('sender-sec').classList.add("two-stay")
+  } else if (senderLevel === 1) {
+    document.getElementById('sender-sec').classList.add("one")
+  } else {
+    document.getElementById('sender-sec').className = 'card ';
+  }
 
   // -- UPDATE SUBJECT SECTION --
 
@@ -81,6 +89,16 @@ function load(data){
   // change description
   subjectDescription = t.subject.description
   document.getElementById('subject-desc').innerHTML = subjectDescription
+
+  if(subjectLevel === 2){
+    console.log("yes")
+    document.getElementById('subject-sec').classList.add("two")
+    document.getElementById('subject-sec').classList.add("two-stay")
+  } else if (subjectLevel === 1) {
+    document.getElementById('subject-sec').classList.add("one")
+  } else {
+    document.getElementById('subject-sec').className = 'card ';
+  }
 
   // -- UPDATE HYPERLINKS SECTION -- 
 
@@ -100,6 +118,16 @@ function load(data){
   });
 
   document.getElementById('link-desc').innerHTML = t.hyperlinks.description;
+
+  if(linksLevel === 2){
+    document.getElementById('links-sec').classList.add("two")
+    document.getElementById('links-sec').classList.add("two-stay")
+
+  } else if (linksLevel === 1) {
+    document.getElementById('links-sec').classList.add("one")
+  } else {
+    document.getElementById('links-sec').className = 'card ';
+  }
 
   // Close button
   document.getElementById('spot-me-close').addEventListener('click', () => {
