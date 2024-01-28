@@ -99,6 +99,8 @@ function load(data){
     rl.className = 'base link-a';
     linkDisplay.appendChild(rl);
   });
+
+  document.getElementById('link-desc').innerHTML = t.hyperlinks.description;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
