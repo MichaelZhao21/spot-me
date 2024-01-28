@@ -48,6 +48,8 @@ body {
 
 #sender-email {
     font-size: 1.5rem;
+    width: 100%;
+    word-wrap: break-word;
 }
 
 #link-display {

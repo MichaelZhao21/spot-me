@@ -15,6 +15,7 @@ const divCss = `
     filter: drop-shadow(0px 5px 3px #AAAAAAAA);
     border-radius: 5px;
     padding: 15px;
+    max-height: 600px;
 }
 `;
 
