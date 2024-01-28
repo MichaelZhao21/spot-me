@@ -42,21 +42,18 @@ function load(data){
   level = checkLevel(senderLevel, subjectLevel, linksLevel)
 
   // -- UPDATE HEADER --
-  const pic = document.getElementById('header-dude');
+  var pic = document.querySelector("img[src='../images/dude-bad.svg' ")
   switch(level){
     case 0:
-      document.getElementById('header-text').innerHTML = "Safe Email"
-      document.getElementById('header-desc').innerHTML = "This email should be safe."
+      document.getElementById('header-text').innerHTML = "SAFE"
       pic.src = "../images/dude-good-green.svg" 
       break;
     case 1:
-      document.getElementById('header-text').innerHTML = "Suspicious..."
-      document.getElementById('header-desc').innerHTML = "Be careful with this email; it may be suspicious."
+      document.getElementById('header-text').innerHTML = "CAUTION"
       pic.src = "../images/dude-maybe.svg" 
       break;
     case 2:
-      document.getElementById('header-text').innerHTML = "Dangerous!"
-      document.getElementById('header-desc').innerHTML = "This email is a SCAM or a PHISHING EMAIL!"
+      document.getElementById('header-text').innerHTML = "SUSPICIOUS"
       pic.src = "../images/dude-bad.svg" 
       break;
     
@@ -64,49 +61,79 @@ function load(data){
 
   // -- UPDATE SENDER SECTION --
 
-  // change email
-  senderEmail = t.sender.text
-  console.log(t.sender.text)
-  document.getElementById('sender-email').innerHTML = senderEmail
-  // change description
-  senderText = t.sender.description
-  document.getElementById('sender-text').innerHTML = senderText
+  if(senderLevel === 0){
+    document.getElementById('sender-sec').style.display = "none"
+  } else {
+
+    // change email
+    senderEmail = t.sender.text
+    document.getElementById('sender-email').innerHTML = senderEmail
+    // change description
+    senderText = t.sender.description
+    document.getElementById('sender-text').innerHTML = senderText
+
+    if(senderLevel === 2){
+      document.getElementById('sender-sec').classList.add("two")
+      document.getElementById('sender-sec').classList.add("two-stay")
+    } else {
+      document.getElementById('sender-sec').classList.add("one")
+    }
+  }
 
 
   // -- UPDATE SUBJECT SECTION --
+  if(subjectLevel === 0){
+    document.getElementById('subject-sec').style.display = "none"
+  } else {
+    
 
-  // change text
-  subjectText = t.subject.text
-  document.getElementById('subject-text').innerHTML = subjectText
+    // change text
+    subjectText = t.subject.text
+    document.getElementById('subject-text').innerHTML = subjectText
+  
+    // change description
+    subjectDescription = t.subject.description
+    document.getElementById('subject-desc').innerHTML = subjectDescription
 
-  // change description
-  subjectDescription = t.subject.description
-  document.getElementById('subject-desc').innerHTML = subjectDescription
+    if(subjectLevel === 2){
+      console.log("yes")
+      document.getElementById('subject-sec').classList.add("two")
+      document.getElementById('subject-sec').classList.add("two-stay")
+    } else {
+      document.getElementById('subject-sec').classList.add("one")
+    }
+  }
 
   // -- UPDATE HYPERLINKS SECTION -- 
 
-  // update display link
-  const linkDisplay = document.getElementById('link-display');
+  if(linksLevel === 0) {
+    document.getElementById('links-sec').style.display = "none"
+  } else {
+    
+    // update display link
+    linkDisplay = t.hyperlinks.links[0].display
+    document.getElementById('link-display').innerHTML = linkDisplay
+    console.log(linksLevel)
+    // update real link
+    linkReal = t.hyperlinks.links[0].actual
+    document.getElementById('link-real').innerHTML = linkReal
 
-  t.hyperlinks.links.forEach((link) => {
-    const dl = document.createElement('p');
-    dl.innerHTML = link.display;
-    dl.className = 'base link-d';
-    linkDisplay.appendChild(dl);
+    console.log(linksLevel)
+    if(linksLevel === 2){
+      document.getElementById('links-sec').classList.add("two")
+      document.getElementById('links-sec').classList.add("two-stay")
+      
+    } else {
+      document.getElementById('links-sec').classList.add("one")
+    }
+  }
 
-    const rl = document.createElement('p');
-    rl.innerHTML = link.actual;
-    rl.className = 'base link-a';
-    linkDisplay.appendChild(rl);
-  });
-
-  document.getElementById('link-desc').innerHTML = t.hyperlinks.description;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   load({
     "sender": {
-      "level": 0, 
+      "level": 2, 
       "text": "sender@email",
       "description": "string describing what is bad if level > 0"
     },
@@ -116,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "description": "same as above"
     },
     "hyperlinks": {
-      "level": 0, 
+      "level": 1, 
       "links": [
         { "display": "display link in email", "actual": "actual URL that it leads to" }
       ],

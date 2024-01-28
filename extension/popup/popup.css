@@ -17,6 +17,49 @@ body {
     font-family: NimbusSans;
 }
 
+@-webkit-keyframes two {
+    0% {
+        background-color: #ffb1ad;
+        opacity:1;
+    }
+    22% {
+        background-color: #ff5e56;
+    }
+    77% {
+        background-color: #fc7871;
+    }
+    100% {
+        background-color: #ff918b;
+    }
+}
+    
+.two {
+    -webkit-animation-name: two;
+    -webkit-animation-duration: 2000ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in-out;
+}
+
+.two-stay {
+    background-color: #ff918b;
+}
+
+/* .two {
+    background-color: #ff918b;
+    -webkit-transition: background-color 2s ease-out;
+    -moz-transition: background-color 2s ease-out;
+    -o-transition: background-color 2s ease-out;
+    transition: background-color 2s ease-out;
+} */
+
+.one {
+    background-color: #fffa9c;
+    -webkit-transition: background-color 2s ease-out;
+    -moz-transition: background-color 2s ease-out;
+    -o-transition: background-color 2s ease-out;
+    transition: background-color 2s ease-out;
+}
+
 .email{
     padding: 15px; 
     display: flex; 
@@ -37,7 +80,9 @@ body {
     box-shadow: inset; 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 10px;
+
 }
+
 
 .base {
     margin: 0; 
