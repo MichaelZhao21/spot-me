@@ -64,7 +64,7 @@ def check():
 
     # If there are any sus words, flag (but if we are already at level 2, don't flag)
     if subj_status < 2:
-        sus_words = ['invoice', 'new', 'message', 'required', 'file', 'request', 'action', 'document', 'verification', 'efax', 'vm', 'deal', 'free', 'guarantee', 'hidden', 'effective', 'limited', 'lifetime', 'lose', 'medium', 'now', 'payment', 'bill', 'debt', '(no subject)']
+        sus_words = ['invoice', 'new', 'message', 'required', 'file', 'request', 'action', 'document', 'verification', 'efax', 'vm', 'deal', 'free', 'guarantee', 'hidden', 'effective', 'limited', 'lifetime', 'lose', 'medium', 'now', 'payment', 'bill', 'debt', 'no subject']
         for word in sus_words:
             if word in subj_clean:
                 subj_status = 1
