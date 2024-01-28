@@ -11,13 +11,15 @@
 body {
     font-family: NimbusSans;
 }
+
 .email{
     padding: 15px; 
     display: flex; 
     flex-wrap: wrap; 
     align-items: center;
-    justify-content: space-evenly;
+    justify-content:space-between;
     width: 225px;
+    border-radius: 5px;
 }
 
 .card {
@@ -30,10 +32,12 @@ body {
     align-items: center; 
     box-shadow: inset; 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 10px;
 }
 
 .base {
     margin: 0; 
     padding: 0; 
-    margin: auto;
+    width: 100%;
+    
 }

@@ -6,8 +6,8 @@
       <!-- Title "Email is Sus" -->
       <div class="email">
   
-          <h1 style="margin-bottom: 0px; padding-bottom: 0px; font-weight: bold;">SUSPICIOUS</h1>
-        <img style="height: 100px; margin: auto; "  src="../images/dude-bad.svg" alt="Icon">
+          <h1 id="header-text" style="margin-bottom: 0px; padding-bottom: 0px; font-weight: bold;">SUSPICIOUS</h1>
+        <img id="header-dude" style="height: 100px; "  src="../images/dude-bad.svg" alt="Icon">
       </div>
   
       <!-- Sender Section -->
@@ -15,26 +15,31 @@
           
           <img style="height: 20px" src="../images/person.jpg" alt="">
           <p style="margin-left: 3px;">Sender</p>
-          <h1 class="base">bob.joe@outlook.com</h1>
-          <p style="margin: 0; padding: 0; margin: auto;">This email is not in your organization</p>
+          <h1 id="sender-email" class="base">bob.joe@outlook.com</h1>
+          <p id="sender-text" style="margin: 0; padding: 0; margin: auto;">This email is not in your organization</p>
         </div>
 
       <!-- Subject Section -->
       <div class="card" >
         <img style="height: 25px" src="../images/mail.png" alt="">
         <p style="margin-left: 3px;">Subject</p>
-        <p class="base">Super important thign that i need you to take care of</p>
+        <p id="subject-text" class="base">Super important thign that i need you to take care of</p>
+        <p id="subject-desc" class="base">Super important thign that i need you to take care of</p>
       </div>
 
       <!-- Hyperlinks Section -->
-      <div class="card" >
+      <div class="card">
         <div style="width: 100%; display: flex; flex-wrap: wrap; align-items: center;">
 
           <img style="height: 20px" src="../images/links-icon-9890.png" alt="">
           <p style="margin-left: 3px;">Hyperlinks</p>
         </div>
-        <p class="base">https://google.com</p>
-        <p class="base">https://forms.google.com/wjfweifjewif</p>
+        <p id="link-display" class="base">https://google.com</p>
+        <div class="base" style="width: 100%; display: flex; flex-wrap: wrap; align-items: center;">
+          <img style="height: 8px; margin-left: 5px;" src="../images/arrow.svg" alt="">
+          <p id="link-real" style="margin: 0; color: red;">https://forms.google.com/wjfweifjewif</p>
+        </div>
+       
       </div>
     </div>
     <script src="popup.js"></script>
