@@ -7,6 +7,11 @@
     font-family: NimbusSans;
     src: url(../fonts/nimbussanl-reg.otf);
 }
+@font-face {
+    font-family: Rubik;
+    src: url(../fonts/Rubik-Bold.ttf);
+    font-weight: bold;
+}
 
 body {
     font-family: NimbusSans;
@@ -76,4 +81,19 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+#header-text {
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+#header-desc {
+    margin: 0;
+    font-size: 1.25rem;
+    margin-top: 5px;
+    color: #45CAE1;
+    font-weight: bold;
 }
