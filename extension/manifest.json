@@ -13,18 +13,14 @@
     {
       "matches": ["https://mail.google.com/*"],
       "js": ["parse.js"]
+    },
+    {
+      "matches": ["https://outlook.office.com/mail/*"],
+      "js": ["oparse.js"]
     }
   ],
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["scripting", "activeTab"],
-  "commands": {
-    "_execute_action": {
-      "suggested_key": {
-        "default": "Ctrl+B",
-        "mac": "Command+B"
-      }
-    }
-  }
+  "permissions": ["scripting", "activeTab"]
 }

@@ -1,9 +1,10 @@
 const observer = new MutationObserver(async () => {
   if (
-    document.querySelector('.gE.iv.gt') &&
-    document.querySelector('h2.hP') &&
-    document.querySelector('.a3s.aiL')
+    document.querySelector('.o4zjZ.ookyc') &&
+    document.querySelector('.D3zfd.XxeQL') &&
+    document.getElementById('UniqueMessageBody')
   ) {
+    console.log('found');
     observer.disconnect();
     arr = await getEmail();
     showPopup(arr);
@@ -15,9 +16,9 @@ observer.observe(document.body, {
 });
 
 const getEmail = async () => {
-  const email = document.querySelector('.gE.iv.gt').textContent;
-  const subject = document.querySelector('h2.hP').textContent;
-  const content = document.querySelector('.a3s.aiL').outerHTML;
+  const email = document.querySelector('.o4zjZ.ookyc').textContent;
+  const subject = document.querySelector('.D3zfd.XxeQL').textContent;
+  const content = document.getElementById('UniqueMessageBody').outerHTML;
 
   const result = await fetch('https://spot-me-app.tech/check', {
     method: 'POST',
