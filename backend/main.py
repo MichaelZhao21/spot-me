@@ -2,6 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS, cross_origin
 from spellchecker import SpellChecker
 from bs4 import BeautifulSoup
+import re
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -60,6 +61,15 @@ def check():
         subj_status = 2
         print("2+ exclamation marks found in subject")
         subj_error = "Subject contains multiple exclamation marks"
+    
+    # Extract sender
+    x = re.findall(r'^(.*)\<(.*)\>', sender)
+    if len(x) > 0:
+        sender = x[0][0].strip()
+        sender_email = x[0][1].strip()
+    else:
+        sender = sender.strip()
+        sender_email = None
 
     # Extract hyperlinks
     soup = BeautifulSoup(content, 'html.parser')
@@ -76,7 +86,7 @@ def check():
         "cum_level": cum_level,
         "sender": {
             "level": 0, 
-            "text": sender,
+            "text": (sender_email + " (" + sender + ")") if sender_email is not None else sender,
             "description": None,
         },
         "subject": {
