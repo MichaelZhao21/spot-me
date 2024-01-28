@@ -9,7 +9,6 @@ const divCss = `
     right: 20px;
     z-index: 9999;
     width: 400px;
-    height: 600px;
     overflow-y: auto;
     overflow-x: hidden;
     background-color: white;
@@ -29,7 +28,6 @@ function build() {
     fs.cpSync('./fonts', './dist/fonts', { recursive: true });
     fs.cpSync('./images', './dist/images', { recursive: true });
     fs.copyFileSync('./manifest.json', './dist/manifest.json');
-    fs.copyFileSync('./background.js', './dist/background.js');
 
     // Read in base js files
     let showPopup = fs.readFileSync('./showpopup.js', 'utf8');
