@@ -1,20 +1,24 @@
-// const email = document.querySelector('h3');
-// const emailText = email.innerText;
-// console.log(emailText);
-document.body.onload = async () => {
-  // Wait for h3 to load in DOM
-  setTimeout(() => {
-    console.log('test');
-    const email = document.querySelectorAll('h3');
-    //const emailText = email.innerText;
-    console.log(email);
-    var port = chrome.runtime.connect({ name: 'channel' });
-    port.postMessage({ test: 'HELLO FROM CONTENT SCRIPT' });
-  }, 4000);
-};
 
-// const linksArray = Array.from(links);
-// const linksHrefs = linksArray.map((link) => link.href);
-// console.log(linksHrefs);
-// console.log('HELLO');
-// chrome.runtime.sendMessage({ links: linksHrefs });
+
+let observer = new MutationObserver((mutations) => {
+  console.log('mut');
+  if (document.querySelector('h3')) {
+    observer.disconnect();
+    getEmail();
+  }
+});
+observer.observe(document.body, {
+  childList: true,
+  subtree: true,
+});
+
+const getEmail = async () => {
+  const email = document
+    .querySelector('.gE.iv.gt')
+    .querySelectorAll('span')[4].textContent;
+  const subject = document.querySelector('h2.hP').textContent;
+  const content = document.querySelector('.a3s.aiL').textContent;
+  console.log(email);
+  var port = chrome.runtime.connect({ name: 'channel' });
+  port.postMessage({ sender: email, subject: subject, content: content });
+};
