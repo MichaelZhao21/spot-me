@@ -134,10 +134,11 @@ body {
 
 .heading {
     margin: 0;
-    margin-left: 3px;
+    margin-left: 5px;
     color: #777777;
     font-size: 1.1rem;
     font-weight: bold;
+    margin-top: 4px;
 }
 
 .heading-container {
