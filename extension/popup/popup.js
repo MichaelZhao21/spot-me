@@ -14,9 +14,40 @@
 //   });
 // });
 
+// The sender object has 3 levels. 1. good 2. maybe 3. bad, display the page on case basis
+
+function load(data){
+  let t = data
+  console.log(t)
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  load({
+    "sender": {
+      "level": 0, 
+      "text": "string with the sender email",
+      "description": "string describing what is bad if level > 0"
+    },
+    "subject": {
+      "level": 0, 
+      "text": "string with subject text",
+      "description": "same as above"
+    },
+    "hyperlinks": {
+      "level": 0, 
+      "links": [
+        { "display": "display link in email", "actual": "actual URL that it leads to" }
+      ],
+      "description": "same as above"
+    }
+  })
+})
+
 chrome.runtime.onConnect.addListener((port) => {
+  
   console.assert(port.name === 'channel');
   port.onMessage.addListener((message) => {
     console.log(message);
+
   });
 });
